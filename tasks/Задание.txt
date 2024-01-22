@@ -1,0 +1,6 @@
+SELECT stack.Meter_pok.acc_id, stack.Accounts.number, stack.Counters.service, COUNT(*) AS count
+FROM stack.Meter_pok
+INNER JOIN stack.Counters ON stack.Meter_pok.acc_id = stack.Counters.acc_id
+INNER JOIN stack.Accounts ON stack.Counters.acc_id = stack.Accounts.row_id
+WHERE stack.Meter_pok.month = '20230201' AND stack.Counters.service = 300
+GROUP BY stack.Meter_pok.acc_id, stack.Counters.service, stack.Accounts.numbe
